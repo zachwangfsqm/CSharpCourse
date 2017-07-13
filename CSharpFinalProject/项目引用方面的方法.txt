@@ -1,0 +1,46 @@
+1、新建或添加几个项目；
+2、新建或添加一个主项目；
+3、点击主项目，右键选择添加引用，点上需要引用的项目；
+   或者，右键选择 生成依赖项->项目依赖项，点上需要引用的项目，另外还要保证被引用的依赖项在主项目之前生成（即项目生成顺序）；
+4、在主项目里加上：
+	using 项目1;
+	using 项目2;
+	...
+5、调用其它项目里的东西需要加上项目名：
+	项目1.Form1
+	项目2.botton1
+	...
+
+例子：
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using c2048;									//一定要using，不然设置就没用了
+using Tetris;									//一定要using，不然设置就没用了
+
+namespace Main_Form
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            c2048.Form1 f1 = new c2048.Form1();					//调用的方法
+            f1.Show();
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Tetris.Form1 f2 = new Tetris.Form1();
+            f2.Show();
+        }
+    }
+}
